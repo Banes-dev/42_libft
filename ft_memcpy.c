@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 12:37:31 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/17 12:37:31 by ehay             ###   ########.fr       */
+/*   Created: 2023/10/17 11:33:42 by ehay              #+#    #+#             */
+/*   Updated: 2023/10/17 11:33:42 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-#include <stdio.h>           // printf
-#include <unistd.h>          // write
-#include <string.h>          // fonction string
-
-typedef	struct	s_list
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	void			*content;
-	struct s_list	*next;
-}				t_list;
+	size_t	i;
 
-typedef struct	s_split_next
-{
-	size_t start;
-	size_t length;
-}				t_split_next;
-
-size_t			ft_strlen(char *str);
-
-#endif
+	if (!dst)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		*(char*)(dst + i) = *(char*)(src + i);
+		i++;
+	}
+	return (dst);
+}

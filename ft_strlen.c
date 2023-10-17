@@ -6,15 +6,13 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:47:57 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/16 15:47:58 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/17 13:01:15 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h> // write
-#include <stdio.h>  // printf
-#include <string.h> // strlen
+#include "libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
 	int	i;
 
