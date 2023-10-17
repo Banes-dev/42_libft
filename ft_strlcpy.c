@@ -24,7 +24,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-size_t ft_strlcpy(char *dest, char *src, unsigned int n)
+size_t	ft_strlcpy(char *dest, char *src, unsigned int n)
 {
 	unsigned int	i;
 
