@@ -1,46 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   *no_ft_strrchr.c                                   :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:19:18 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/18 15:02:37 by ehay             ###   ########.fr       */
+/*   Created: 2023/10/18 12:01:45 by ehay              #+#    #+#             */
+/*   Updated: 2023/10/18 12:26:30 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(char *text, char lettre)
+char	*ft_strnstr(const char *str, const char *to_find, int nb)
 {
 	int	i;
+	int	j;
 
-	i = (ft_strlen(text) - 1);
-	if (!text)
-	{
+	i = 0;
+	if (!str || !to_find)
 		return (NULL);
-	}
-	while (text[i] != '\0')
+	if (!to_find || !to_find[0])
+		return ((char *)str);
+	while (str[i] && i < nb)
 	{
-		if (text[i] == lettre)
+		if (str[i] == to_find[0])
 		{
-			return ((char *)(text + i));
+			j = 0;
+			while (str[i + j] == to_find[j] && to_find[j])
+				j++;
+			if (to_find[j] == 0)
+				return ((char *)(str + i));
 		}
-		i--;
+		i++;
 	}
 	return (NULL);
 }
 
 // int main(void)
 // {
-// 	char textbon[] = "ABcdTGzwtzt";
-// 	char notext = 'z';
-// 	if (ft_strrchr(textbon, notext))
-// 	{
-// 		printf("%s", ft_strrchr(textbon, notext));
-// 		printf("\n");
-// 		printf("%s", strrchr(textbon, notext));
-// 		printf("\n");
-// 	}
+// 	char test1[] = "salut comment sa va ?";
+// 	char test2[] = "sa va";
+// 	printf("%s", ft_strnstr(test1, test2, 20));
+// 	printf("\n");
+// 	return (0);
 // }

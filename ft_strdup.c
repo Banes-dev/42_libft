@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   *no_ft_strdup.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 15:47:57 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/18 15:01:21 by ehay             ###   ########.fr       */
+/*   Created: 2023/10/18 12:44:28 by ehay              #+#    #+#             */
+/*   Updated: 2023/10/18 14:47:09 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strdup(char *src)
 {
-	size_t	i;
+	char	*renv;
+	int		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (src == NULL)
 	{
+		return (NULL);
+	}
+	renv = (char *)malloc(ft_strlen(src) + 1);
+	if (renv == NULL)
+	{
+		return (NULL);
+	}
+	while (src[i])
+	{
+		renv[i] = src[i];
 		i++;
 	}
-	return (i);
+	renv[i] = '\0';
+	return (renv);
 }
 
-// int	main(void)
+// int main(void)
 // {
-// 	char *test = "testtttt";
-// 	printf("%ld", ft_strlen(test));
-// 	return (0);
+//     printf("%s", ft_strdup("test"));
+//     printf("\n");
+//     printf("%s", strdup("test"));
+//     printf("\n");
+//     return (0);
 // }
