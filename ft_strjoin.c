@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:50:43 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/18 16:36:23 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/19 11:48:34 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	size1;
-	int	size2;
-	int	totalsize;
+	int		size1;
+	int		size2;
+	int		totalsize;
 	char	*result;
 
 	size1 = ft_strlen(s1);
