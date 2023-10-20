@@ -75,5 +75,6 @@ char	*ft_itoa(int n)
 // }
 
 // Explication : 
-// En faisant modulo (%) 10 on prend ce qui passe derriere la virgule donc le dernier numero,
+// En faisant modulo (%) 10 on prend ce qui passe derriere 
+// la virgule donc le dernier numero,
 // donc boucle a l'envers pour remettre le result.
