@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:41:42 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/20 12:13:22 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 11:47:23 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*ft_strdup(char *src)
 	renv = (char *)malloc(ft_strlen(src) + 1);
 	if (renv == NULL)
 	{
+		free(renv);
 		return (NULL);
 	}
 	while (src[i])

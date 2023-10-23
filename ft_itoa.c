@@ -45,6 +45,7 @@ char	*ft_itoa(int n)
 	size = count_size((long) n);
 	str = (char *) malloc(sizeof(char) * (size + 1));
 	if (str == NULL)
+		free(str);
 		return (NULL);
 	nb = (long) n;
 	is_negative = 0;

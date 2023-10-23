@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:30:35 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/18 16:13:07 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 11:47:58 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substring = (char *)malloc(len + 1);
 	if (!substring)
 	{
+		free(substring);
 		return (NULL);
 	}
 	i = 0;

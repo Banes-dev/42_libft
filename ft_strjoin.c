@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:50:43 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/19 11:48:34 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 11:47:07 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result = malloc(totalsize * sizeof(char));
 	if (!result)
 	{
+		free(result);
 		return (NULL);
 	}
 	return (result);

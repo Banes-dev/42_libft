@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:49:26 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/19 13:04:01 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 12:24:32 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int
 	return (0);
 }
 
-char	*ft_strtrim(char *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
 	int		start;
@@ -55,6 +55,7 @@ char	*ft_strtrim(char *s1, char const *set)
 	str = (char *)malloc((end - start + 1) * sizeof(s1));
 	if (!str)
 	{
+		free(str);
 		return (NULL);
 	}
 	i = 0;
@@ -64,18 +65,19 @@ char	*ft_strtrim(char *s1, char const *set)
 		i++;
 	}
 	str[i] = '\0';
+	printf("%s\n", str);
 	return (str);
 }
 
-// int main()
-// {
-// 	char atrrim[] = "TjajT";
-// 	char trouver = 'T';
-//     char *result = ft_strtrim(atrrim, &trouver);
+int main()
+{
+	char atrrim[] = "TjajT";
+	char trouver = 'T';
+    char *result = ft_strtrim(atrrim, &trouver);
 
-//     if (result)
-//     {
-//         printf("%s\n", result);
-//         free(result);
-//     }
-// }
+    if (result)
+    {
+        printf("%s lala\nici", result);
+        free(result);
+    }
+}

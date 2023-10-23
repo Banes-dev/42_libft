@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:38:29 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/19 13:03:00 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 11:46:39 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_strndup(char *src, int n)
 
 	pnt = malloc((n + 1) * sizeof(char));
 	if (!pnt)
+		free(pnt);
 		return (NULL);
 	i = 0;
 	while (src[i] && i < n)
@@ -75,6 +76,7 @@ char	**ft_split(char *str, char *charset)
 	strs_splited_ln = splited_arr_len(str, charset);
 	strs_splited = malloc((strs_splited_ln + 1) * sizeof(char *));
 	if (!strs_splited)
+		free(strs_splited);
 		return (NULL);
 	j = 0;
 	i = 0;
