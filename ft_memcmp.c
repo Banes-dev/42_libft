@@ -6,18 +6,18 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:23:34 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/18 12:00:19 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:43:26 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *comp1, const void *comp2, int nb)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const unsigned char	*p1 = comp1;
-	const unsigned char	*p2 = comp2;
+	const unsigned char	*p1 = s1;
+	const unsigned char	*p2 = s2;
 
-	while (nb--)
+	while (n--)
 	{
 		if (*p1 > *p2)
 		{

@@ -45,7 +45,6 @@ char	*ft_itoa(int n)
 	size = count_size((long) n);
 	str = (char *) malloc(sizeof(char) * (size + 1));
 	if (str == NULL)
-		free(str);
 		return (NULL);
 	nb = (long) n;
 	is_negative = 0;
@@ -66,16 +65,17 @@ char	*ft_itoa(int n)
 }
 
 // int main() {
-//     int number = -849135791;
-//     char *str = ft_itoa(number);
+// 	int		number = -849135791;
+// 	char	*str = ft_itoa(number);
 
-//     printf("Int: %d, String: %s\n", number, str);
-//     free(str);
-
-//     return 0;
+// 	printf("Int: %d, String: %s\n", number, str);
+// 	free(str);
+// 	return 0;
 // }
 
 // Explication : 
 // En faisant modulo (%) 10 on prend ce qui passe derriere 
 // la virgule donc le dernier numero,
 // donc boucle a l'envers pour remettre le result.
+
+// ligne 48         free(str);

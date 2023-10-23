@@ -6,15 +6,15 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:15:02 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/17 13:01:36 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:40:33 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int text)
+int	ft_isprint(int c)
 {
-	return (text >= 32 && text <= 126);
+	return (c >= 32 && c <= 126);
 }
 
 // int main(void)

@@ -6,16 +6,16 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:01:26 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/17 13:01:46 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:38:48 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(char text)
+int	ft_isalnum(int c)
 {
-	return ((text >= 97 && text <= 122) || (text >= 65 && text <= 90)
-		|| (text >= '0' && text <= '9'));
+	return ((c >= 97 && c <= 122) || (c >= 65 && c <= 90)
+		|| (c >= '0' && c <= '9'));
 }
 
 // int main(void)

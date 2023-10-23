@@ -6,13 +6,13 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 12:26:06 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/20 12:40:31 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:24:10 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *c))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	size_t	i;
 

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   *no_ft_strrchr.c                                   :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:19:18 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/18 15:02:37 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 16:05:58 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(char *text, char lettre)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 
-	i = (ft_strlen(text) - 1);
-	if (!text)
+	i = (ft_strlen(s) - 1);
+	if (!s)
 	{
 		return (NULL);
 	}
-	while (text[i] != '\0')
+	while (s[i] != '\0')
 	{
-		if (text[i] == lettre)
+		if (s[i] == c)
 		{
-			return ((char *)(text + i));
+			return ((char *)(s + i));
 		}
 		i--;
 	}

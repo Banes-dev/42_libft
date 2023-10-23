@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:38:29 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 11:46:39 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:01:30 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ char	*ft_strndup(char *src, int n)
 
 	pnt = malloc((n + 1) * sizeof(char));
 	if (!pnt)
+	{
 		free(pnt);
 		return (NULL);
+	}
 	i = 0;
 	while (src[i] && i < n)
 	{
@@ -65,7 +67,7 @@ int	splited_arr_len(char *str, char *charset)
 	return (strs_splited_ln);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char *s, char *c)
 {
 	int		i;
 	int		j;
@@ -73,22 +75,22 @@ char	**ft_split(char *str, char *charset)
 	int		strs_splited_ln;
 	char	**strs_splited;
 
-	strs_splited_ln = splited_arr_len(str, charset);
+	strs_splited_ln = splited_arr_len(s, c);
 	strs_splited = malloc((strs_splited_ln + 1) * sizeof(char *));
 	if (!strs_splited)
-		free(strs_splited);
+	{
 		return (NULL);
-	j = 0;
+	}
 	i = 0;
 	k = 0;
-	while (str[i])
+	while (s[i])
 	{
-		while (is_delimiter(str[i], charset))
+		while (is_delimiter(s[i], c))
 			i++;
 		j = i;
-		while (!is_delimiter(str[i], charset) && str[i] != '\0' )
+		while (!is_delimiter(s[i], c) && s[i] != '\0' )
 			i++;
-		strs_splited[k++] = ft_strndup(&str[j], i - j);
+		strs_splited[k++] = ft_strndup(&s[j], i - j);
 	}
 	strs_splited[strs_splited_ln] = NULL;
 	return (strs_splited);
@@ -106,7 +108,9 @@ char	**ft_split(char *str, char *charset)
 // 		printf("%s\n", split[index]);
 // 		index++;
 // 	}
-// }  
+// }
 
-// exemple console : ./a.out rouge, vert, bleu ,
+// exemple console : ./a.out rouge,vert,bleu ,
 // result = rouge vert bleu
+
+// ligne 82 	free(strs_splited);

@@ -6,31 +6,31 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:44:28 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 11:46:57 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:50:44 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *s)
 {
 	char	*renv;
 	int		i;
 
 	i = 0;
-	if (src == NULL)
+	if (s == NULL)
 	{
 		return (NULL);
 	}
-	renv = (char *)malloc(ft_strlen(src) + 1);
+	renv = (char *)malloc(ft_strlen(s) + 1);
 	if (renv == NULL)
 	{
 		free(renv);
 		return (NULL);
 	}
-	while (src[i])
+	while (s[i])
 	{
-		renv[i] = src[i];
+		renv[i] = s[i];
 		i++;
 	}
 	renv[i] = '\0';

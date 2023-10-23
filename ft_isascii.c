@@ -6,15 +6,15 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:04:11 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/17 13:01:41 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:40:10 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int text)
+int	ft_isascii(int c)
 {
-	return (text >= 0 && text <= 127);
+	return (c >= 0 && c <= 127);
 }
 
 // int main(void)

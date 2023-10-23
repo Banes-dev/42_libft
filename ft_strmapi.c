@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:41:42 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 11:47:23 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/23 15:22:31 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(char const *src)
 {
 	char	*renv;
 	int		i;
@@ -49,7 +49,7 @@ char	*ft_strdup(char *src)
 	return (renv);
 }
 
-char	*ft_strmapi(char *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*str;
 	size_t	i;
