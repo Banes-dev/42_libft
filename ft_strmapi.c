@@ -6,23 +6,23 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:41:42 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 15:22:31 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/24 12:32:23 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
-{
-	int	i;
+// int	ft_strlen(const char *str)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+// 	i = 0;
+// 	while (str[i] != '\0')
+// 	{
+// 		i++;
+// 	}
+// 	return (i);
+// }
 
 char	*ft_strdup(char const *src)
 {

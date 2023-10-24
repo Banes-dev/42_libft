@@ -6,14 +6,14 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:38:29 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 15:01:30 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/24 12:32:03 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <fcntl.h>
 
-char	*ft_strndup(char *src, int n)
+char	*ft_strndup(const char *src, int n)
 {
 	char	*pnt;
 	int		i;
@@ -48,7 +48,7 @@ int	is_delimiter(char c, char *del)
 	return (0);
 }
 
-int	splited_arr_len(char *str, char *charset)
+int	splited_arr_len(const char *str, char *charset)
 {
 	int		i;
 	int		strs_splited_ln;
@@ -67,7 +67,7 @@ int	splited_arr_len(char *str, char *charset)
 	return (strs_splited_ln);
 }
 
-char	**ft_split(char *s, char *c)
+char	**ft_split(char const *s, char *c)
 {
 	int		i;
 	int		j;
