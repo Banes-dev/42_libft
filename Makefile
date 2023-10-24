@@ -2,7 +2,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-LIB = libft.a
+NAME = libft.a
 
 FUNC =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c \
@@ -26,19 +26,19 @@ TARGET = exe
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${LIB}:	${OBJSALL}
-		ar -rsc ${LIB} ${OBJSALL}
+${NAME}:	${OBJSALL}
+		ar -rsc ${NAME} ${OBJSALL}
 
 # bonus:	${OBJSALL}
-# 		ar -rsc ${LIB} ${OBJSALL}
+# 		ar -rsc ${NAME} ${OBJSALL}
 
-all: 	${LIB}
+all: 	${NAME}
 
 clean:	
 		rm -f ${OBJSALL}
 
 fclean:	clean;
-		rm -f ${LIB}
+		rm -f ${NAME}
 
 re:	fclean all
 

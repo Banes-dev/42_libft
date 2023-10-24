@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:30:35 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 11:47:58 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/24 17:06:14 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*substring;
-	size_t	i;
+	char			*new;
+	unsigned int	i;
 
-	substring = (char *)malloc(len + 1);
-	if (!substring)
-	{
-		free(substring);
+	if (start >= ft_strlen(s))
+		len = 0;
+	else if (len > ft_strlen(s + start))
+		len = ft_strlen(s + start);
+	new = malloc(sizeof(char) * (len + 1));
+	if (!new)
 		return (NULL);
-	}
 	i = 0;
-	while (i < len && s[start + i] != '\0')
+	while (start + i < ft_strlen(s) && i < len)
 	{
-		substring[i] = s[start + i];
+		new[i] = s[start + i];
 		i++;
 	}
-	substring[i] = '\0';
-	return (substring);
+	new[i] = '\0';
+	return (new);
 }
 
 // int main() {

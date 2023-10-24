@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:50:43 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 11:47:07 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/24 17:07:26 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,27 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		size1;
-	int		size2;
-	int		totalsize;
-	char	*result;
+	char	*new;
+	size_t	i;
+	size_t	j;
 
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	totalsize = size1 + size2;
-	result = malloc(totalsize * sizeof(char));
-	if (!result)
-	{
-		free(result);
+	new = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!new)
 		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		new[i] = s1[i];
+		i++;
 	}
-	return (result);
+	j = 0;
+	while (s2[j])
+	{
+		new[i + j] = s2[j];
+		j++;
+	}
+	new[i + j] = '\0';
+	return (new);
 }
 
 // int main(void)
