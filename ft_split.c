@@ -5,112 +5,71 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 12:38:29 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/24 12:32:03 by ehay             ###   ########.fr       */
+/*   Created: 2023/10/25 14:54:49 by ehay              #+#    #+#             */
+/*   Updated: 2023/10/25 15:08:39 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <fcntl.h>
 
-char	*ft_strndup(const char *src, int n)
-{
-	char	*pnt;
-	int		i;
-
-	pnt = malloc((n + 1) * sizeof(char));
-	if (!pnt)
-	{
-		free(pnt);
-		return (NULL);
-	}
-	i = 0;
-	while (src[i] && i < n)
-	{
-		pnt[i] = src[i];
-		i++;
-	}
-	pnt[i] = '\0';
-	return (pnt);
-}
-
-int	is_delimiter(char c, char *del)
+static int	count_words(const char *str, char c)
 {
 	int	i;
+	int	trigger;
 
 	i = 0;
-	while (del[i])
+	trigger = 0;
+	while (*str)
 	{
-		if (c == del[i])
-			return (1);
+		if (*str != c && trigger == 0)
+		{
+			trigger = 1;
+			i++;
+		}
+		else if (*str == c)
+			trigger = 0;
+		str++;
+	}
+	return (i);
+}
+
+static char	*word_dup(const char *str, int start, int finish)
+{
+	char	*word;
+	int		i;
+
+	i = 0;
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
+	word[i] = '\0';
+	return (word);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	i;
+	size_t	j;
+	int		index;
+	char	**split;
+
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!s || !split)
+		return (0);
+	i = 0;
+	j = 0;
+	index = -1;
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
+		{
+			split[j++] = word_dup(s, index, i);
+			index = -1;
+		}
 		i++;
 	}
-	return (0);
+	split[j] = 0;
+	return (split);
 }
-
-int	splited_arr_len(const char *str, char *charset)
-{
-	int		i;
-	int		strs_splited_ln;
-
-	i = 0;
-	strs_splited_ln = 0;
-	if (!is_delimiter(str[0], charset) && str[0] != '\0')
-		strs_splited_ln++;
-	while (str[i])
-	{
-		if ((is_delimiter(str[i], charset) && !is_delimiter(str[i + 1], charset)
-				&& str[i + 1] != '\0' ))
-			strs_splited_ln++;
-		i++;
-	}
-	return (strs_splited_ln);
-}
-
-char	**ft_split(char const *s, char *c)
-{
-	int		i;
-	int		j;
-	int		k;
-	int		strs_splited_ln;
-	char	**strs_splited;
-
-	strs_splited_ln = splited_arr_len(s, c);
-	strs_splited = malloc((strs_splited_ln + 1) * sizeof(char *));
-	if (!strs_splited)
-	{
-		return (NULL);
-	}
-	i = 0;
-	k = 0;
-	while (s[i])
-	{
-		while (is_delimiter(s[i], c))
-			i++;
-		j = i;
-		while (!is_delimiter(s[i], c) && s[i] != '\0' )
-			i++;
-		strs_splited[k++] = ft_strndup(&s[j], i - j);
-	}
-	strs_splited[strs_splited_ln] = NULL;
-	return (strs_splited);
-}
-
-// int	main(int argc, char **argv)
-// {
-// 	int		index;
-// 	char	**split;
-// 	(void)	argc;
-// 	split = ft_split(argv[1], argv[2]);
-// 	index = 0;
-// 	while (split[index])
-// 	{
-// 		printf("%s\n", split[index]);
-// 		index++;
-// 	}
-// }
-
-// exemple console : ./a.out rouge,vert,bleu ,
-// result = rouge vert bleu
-
-// ligne 82 	free(strs_splited);

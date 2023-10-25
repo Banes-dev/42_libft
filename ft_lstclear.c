@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 12:26:06 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/25 12:19:54 by ehay             ###   ########.fr       */
+/*   Created: 2023/10/25 15:16:19 by ehay              #+#    #+#             */
+/*   Updated: 2023/10/25 16:12:27 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	i;
-
-	i = 0;
-	if (s == NULL || f == NULL)
-	{
+	if (!lst || !(*lst) || !del)
 		return ;
-	}
-	while (s[i])
-	{
-		(*f)(i, s + i);
-		i++;
-	}
+	if ((*lst)->next)
+		ft_lstclear((&(*lst)->next), del);
+	del((*lst)->content);
+	free(*lst);
+	*lst = NULL;
 }
-
-// void	transform(unsigned int index, char *c)
-// {
-//     printf("Caractère à l'index %u : %c\n", index, *c);
-// }
-
-// int main() {
-//     char str[] = "Hello, World!";
-//     ft_striteri(str, transform);
-//     return 0;
-// }

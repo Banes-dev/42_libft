@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 12:26:06 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/25 12:19:54 by ehay             ###   ########.fr       */
+/*   Created: 2023/10/25 15:45:44 by ehay              #+#    #+#             */
+/*   Updated: 2023/10/25 16:13:07 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
+	t_list	*start;
+	t_list	*current;
 
-	i = 0;
-	if (s == NULL || f == NULL)
+	if (!lst || !f || !del)
+		return (NULL);
+	start = ft_lstnew(f(lst->content));
+	current = start;
+	while (lst && lst->next)
 	{
-		return ;
+		if (!current)
+			return (NULL);
+		current->next = ft_lstnew(f(lst->next->content));
+		current = current->next;
+		lst = lst->next;
 	}
-	while (s[i])
-	{
-		(*f)(i, s + i);
-		i++;
-	}
+	return (start);
 }
-
-// void	transform(unsigned int index, char *c)
-// {
-//     printf("Caractère à l'index %u : %c\n", index, *c);
-// }
-
-// int main() {
-//     char str[] = "Hello, World!";
-//     ft_striteri(str, transform);
-//     return 0;
-// }

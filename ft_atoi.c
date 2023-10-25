@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:27:32 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 15:32:02 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/25 12:38:56 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
-	int	value;
+	int		nbr;
+	int		sign;
+	size_t	i;
 
-	i = 0;
-	value = 0;
+	nbr = 0;
 	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
+	i = 0;
+	while (nptr[i] == ' ' || ('\t' <= nptr[i] && nptr[i] <= '\r'))
 		i++;
-	while (nptr[i] == '+' || nptr[i] == '-')
+	if (nptr[i] == '+')
+		i++;
+	else if (nptr[i] == '-')
 	{
-		if (nptr[i] == '-')
-		{
-			sign = sign * -1;
-		}
+		sign *= -1;
 		i++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while ('0' <= nptr[i] && nptr[i] <= '9')
 	{
-		value = value * 10 + nptr[i] - '0';
+		nbr = nbr * 10 + nptr[i] - '0';
 		i++;
 	}
-	return (value * sign);
+	return (nbr * sign);
 }
 
 // int main(void)

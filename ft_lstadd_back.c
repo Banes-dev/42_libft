@@ -6,20 +6,11 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 15:48:03 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/24 16:16:51 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/25 13:19:41 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst != NULL && lst->next != NULL)
-	{
-		lst = lst->next;
-	}
-	return (lst);
-}
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {

@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 10:49:26 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/24 12:27:31 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/25 13:02:19 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,48 +24,98 @@
 // 	return (i);
 // }
 
-static int
-	ft_char_in_set(char c, char const *set)
+static char	*find_begin(char const *s1, char const *set)
 {
 	size_t	i;
+	size_t	j;
+	int		in_set;
 
+	in_set = 0;
 	i = 0;
-	while (set[i])
+	j = 0;
+	while (s1[i])
 	{
-		if (set[i] == c)
-			return (1);
+		in_set = 0;
+		j = 0;
+		while (set[j])
+		{
+			if (s1[i] == set[j])
+				in_set = 1;
+			j++;
+		}
+		if (!in_set)
+			break ;
 		i++;
 	}
-	return (0);
+	return ((char *) s1 + i);
+}
+
+static char	*find_end(char const *s1, char const *set, char const *begin)
+{
+	size_t	i;
+	size_t	j;
+	int		in_set;
+
+	in_set = 0;
+	i = ft_strlen(s1) - 1;
+	j = 0;
+	while (s1 + i >= begin)
+	{
+		in_set = 0;
+		j = 0;
+		while (set[j])
+		{
+			if (s1[i] == set[j])
+				in_set = 1;
+			j++;
+		}
+		if (!in_set)
+			break ;
+		i--;
+	}
+	if (s1 + i < begin)
+		return ((char *) begin);
+	return ((char *) s1 + i);
+}
+
+static char	*fill_str(char const *begin, char const *end)
+{
+	char	*new;
+	size_t	i;
+
+	new = malloc(sizeof(char) * (end - begin + 2));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (begin + i <= end)
+	{
+		new[i] = begin[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	int		start;
-	int		end;
-	int		i;
+	char	*begin;
+	char	*end;
+	char	*new;
 
-	start = 0;
-	end = ft_strlen(s1);
-	while (s1[start] && ft_char_in_set(s1[start], set))
-		start++;
-	while (end > start && ft_char_in_set(s1[end - 1], set))
-		end--;
-	str = (char *)malloc((end - start + 1) * sizeof(s1));
-	if (!str)
+	begin = find_begin(s1, set);
+	end = find_end(s1, set, s1);
+	if (!s1[0] || end < begin)
 	{
-		free(str);
+		new = malloc(sizeof(char) * 1);
+		if (!new)
+			return (NULL);
+		new[0] = '\0';
+	}
+	else
+		new = fill_str(begin, end);
+	if (!new)
 		return (NULL);
-	}
-	i = 0;
-	while (start < end)
-	{
-		str[i] = s1[start++];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	return (new);
 }
 
 // int main()

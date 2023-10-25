@@ -15,9 +15,12 @@ FUNCADDITIONAL =	ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c \
 					ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 BONUS =	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-		ft_lstadd_back.c
+		ft_lstadd_back.c ft_lstdelone.c ft_lstiter.c ft_lstclear.c ft_lstmap.c
 
+SRCS = ${FUNC} ${FUNCADDITIONAL}
 SRCSALL = ${FUNC} ${FUNCADDITIONAL} ${BONUS}
+
+OBJS = ${SRCS:.c=.o} 
 OBJSALL = ${SRCSALL:.c=.o} 
 
 TARGET = exe
@@ -26,20 +29,20 @@ TARGET = exe
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}:	${OBJSALL}
-		ar -rsc ${NAME} ${OBJSALL}
+${NAME}:	${OBJS}
+		ar -rsc ${NAME} ${OBJS}
 
-# bonus:	${OBJSALL}
-# 		ar -rsc ${NAME} ${OBJSALL}
+bonus: ${OBJSALL}
+		ar -rsc ${NAME} ${OBJSALL}; \
 
 all: 	${NAME}
 
 clean:	
 		rm -f ${OBJSALL}
 
-fclean:	clean;
+fclean:	clean
 		rm -f ${NAME}
 
 re:	fclean all
 
-.PHONY: all clean fclean re   #bonus
+.PHONY: all clean fclean re bonus

@@ -6,48 +6,11 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:41:42 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/24 12:32:23 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/25 13:19:47 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-// int	ft_strlen(const char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (str[i] != '\0')
-// 	{
-// 		i++;
-// 	}
-// 	return (i);
-// }
-
-char	*ft_strdup(char const *src)
-{
-	char	*renv;
-	int		i;
-
-	i = 0;
-	if (src == NULL)
-	{
-		return (NULL);
-	}
-	renv = (char *)malloc(ft_strlen(src) + 1);
-	if (renv == NULL)
-	{
-		free(renv);
-		return (NULL);
-	}
-	while (src[i])
-	{
-		renv[i] = src[i];
-		i++;
-	}
-	renv[i] = '\0';
-	return (renv);
-}
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
