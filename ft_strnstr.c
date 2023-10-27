@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:01:45 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/24 17:04:10 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/27 14:28:00 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!big || !little)
-		return (NULL);
 	if (ft_strlen(little) == 0)
 		return ((char *) big);
 	len_n = ft_strlen(little);

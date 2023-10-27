@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -22,8 +22,6 @@ SRCSALL = ${FUNC} ${FUNCADDITIONAL} ${BONUS}
 
 OBJS = ${SRCS:.c=.o} 
 OBJSALL = ${SRCSALL:.c=.o} 
-
-TARGET = exe
 
 
 .c.o:

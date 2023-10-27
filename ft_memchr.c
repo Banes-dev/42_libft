@@ -6,7 +6,7 @@
 /*   By: ehay <ehay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:37:57 by ehay              #+#    #+#             */
-/*   Updated: 2023/10/23 15:42:17 by ehay             ###   ########.fr       */
+/*   Updated: 2023/10/27 14:33:19 by ehay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (!s)
-	{
-		return (NULL);
-	}
 	while (i < n)
 	{
 		if (*(unsigned char *)(s + i) == (unsigned char)c)
